@@ -31,17 +31,16 @@ class StartScreen extends StatelessWidget {
                 children: <Widget>[
                   FlutterLogo(size: 90),
                   SizedBox(height: 10),
-                  RaisedButton(
-                    highlightColor: Colors.blue[900],
-                    elevation: 6.0,
+                  ElevatedButton(
+                    style: ButtonStyle(overlayColor: MaterialStateProperty.all(Colors.blue[900]), backgroundColor: MaterialStateProperty.all(Colors.blue[400]), elevation: MaterialStateProperty.all(6.0),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    )),
+                    ),
                     child: Text(
                       'START',
                       style: TextStyle(color: Colors.white, fontSize: 16),
                     ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    color: Colors.blue[400],
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(builder: (context) {

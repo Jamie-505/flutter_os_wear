@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
 
 const img = 'assets/images/';
@@ -22,7 +21,7 @@ class _PlayRouteState extends State<PlayRoute> {
   initState() {
     super.initState();
     player = new AudioPlayer();
-    cache = new AudioCache(fixedPlayer: player);
+    cache = new AudioCache();
   }
 
   @override
@@ -33,7 +32,9 @@ class _PlayRouteState extends State<PlayRoute> {
 
   playPause(sound) {
     if (initialPlay) {
-      cache.play('audio/$sound.mp3');
+      String soundPath = 'audio/$sound.mp3';
+      cache.load(soundPath);
+      player.play(AssetSource(soundPath));
       playing = true;
       initialPlay = false;
     }
